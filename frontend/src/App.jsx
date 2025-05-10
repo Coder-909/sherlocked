@@ -1,7 +1,7 @@
 import React,{ useState,createContext,useContext,useEffect,useRef } from 'react'
 import {Routes,Route} from "react-router-dom";
 import './App.css'
-import NavBar from "./components/Navbar.jsx";
+import NavBar from "./components/NavBar.jsx";
 import Login from "./pages/Login.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import About from "./pages/About.jsx"

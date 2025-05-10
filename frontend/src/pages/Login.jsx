@@ -14,7 +14,7 @@ const Login = ({}) => {
 
 	const submitHandler = async(e) => {
 		e.preventDefault();
-		const result = await(await fetch('http://localhost:3000/auth/login', {
+		const result = await(await fetch('https://ncs-backend-gilt.vercel.app/auth/login', {
 			method:"POST",
 			headers:{
 				'Content-Type': 'application/json',

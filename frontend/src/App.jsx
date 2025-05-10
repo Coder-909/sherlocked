@@ -20,7 +20,7 @@ function App() {
 		const func = async () => {  
 		  const token = localStorage.getItem("token");
 		  if (token) {
-			const result = await fetch('http://localhost:3000/auth/get-user', {
+			const result = await fetch('https://ncs-backend-gilt.vercel.app/auth/get-user', {
 			  method: 'GET',
 			  headers: {
 				'Content-Type': 'application/json',

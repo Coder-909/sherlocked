@@ -9,7 +9,7 @@ const popup = ({setPopup}) => {
 
     const submitHandler = async(e) => {
         e.preventDefault();
-        const result = await fetch('http://localhost:3000/bounty/get-bounties', {
+        const result = await fetch('https://ncs-backend-gilt.vercel.app/bounty/get-bounties', {
             method:"POST",
             headers:{
                 'Content-Type': 'application/json',

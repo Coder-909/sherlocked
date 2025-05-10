@@ -12,7 +12,7 @@ const BugBounty = ({remainingTime,setRemainingTime}) => {
 
 	useEffect(() => {
 		const fetchBounty = async () => {
-			const result = await fetch('http://localhost:3000/bounty/get-bounties', {
+			const result = await fetch('https://ncs-backend-gilt.vercel.app/bounty/get-bounties', {
 				method:"GET",
 				headers:{
 					'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const BugBounty = ({remainingTime,setRemainingTime}) => {
 	const submitHandler = async () => {
 		console.log(submission);
 		submission.map(async(data,index) => {
-			const result = await fetch('http://localhost:3000/bounty/submit-solution', {
+			const result = await fetch('https://ncs-backend-gilt.vercel.app/bounty/submit-solution', {
 				method:"POST",
 				headers:{
 					'Content-Type': 'application/json',

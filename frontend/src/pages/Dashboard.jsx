@@ -16,7 +16,7 @@ const Dashboard = () => {
 		const fetchData = async () => {
 			const token = localStorage.getItem("token");
 			if (token) {
-				const result = await fetch('http://localhost:3000/admin/dashboard', {
+				const result = await fetch('https://ncs-backend-gilt.vercel.app/admin/dashboard', {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json',

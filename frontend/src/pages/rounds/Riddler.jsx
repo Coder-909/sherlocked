@@ -12,7 +12,7 @@ const Riddler = () => {
   const token = localStorage.getItem('token');
   useEffect(() => {
     const fetchRiddles = async () => {
-      const result = await fetch('http://localhost:3000/cluehunt/assigned-clues', {
+      const result = await fetch('https://ncs-backend-gilt.vercel.app/cluehunt/assigned-clues', {
         method:"GET",
         headers:{
           'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ const Riddler = () => {
   },[])
   // console.log(user);
   const submitHandler = async () => {
-    const result = await fetch('http://localhost:3000/cluehunt/submit-cluehunt', {
+    const result = await fetch('https://ncs-backend-gilt.vercel.app/cluehunt/submit-cluehunt', {
       method:"POST",
       headers:{
         'Content-Type': 'application/json',

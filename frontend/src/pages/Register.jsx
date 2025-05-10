@@ -19,7 +19,7 @@ const Register = () => {
 
 	const submitHandler = async(e) => {
 		e.preventDefault();
-		const result = await(await fetch('http://localhost:3000/auth/register', {
+		const result = await(await fetch('https://ncs-backend-gilt.vercel.app/auth/register', {
 			method:"POST",
 			headers:{
 				'Content-Type': 'application/json',

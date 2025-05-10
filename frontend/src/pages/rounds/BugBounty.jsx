@@ -1,7 +1,7 @@
 import React,{useContext,useEffect,useState} from 'react'
 import {UserContext} from '../../App.jsx' 
 import {useNavigate} from "react-router-dom";
-import BugSolution from '../../components/bugSolution.jsx';
+import BugSolution from '../../components/BugSolution.jsx';
 import InstructionImage from "../../assets/instructionImage.jpg";
 
 const BugBounty = ({remainingTime,setRemainingTime}) => {

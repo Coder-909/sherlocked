@@ -1,58 +1,60 @@
-import React,{ useState,createContext,useContext,useEffect } from 'react'
+import React,{ useState,createContext,useContext,useEffect,useRef } from 'react'
 import {Routes,Route} from "react-router-dom";
 import './App.css'
 import NavBar from "./components/Navbar.jsx";
 import Login from "./pages/Login.jsx";
 import HomePage from "./pages/HomePage.jsx";
-import Admin from "./pages/Admin.jsx" 
 import About from "./pages/About.jsx"
 import BugBounty from "./pages/rounds/BugBounty.jsx"
+import Riddler from "./pages/rounds/Riddler.jsx"
+import Register from "./pages/Register.jsx"
+import Dashboard from "./pages/Dashboard.jsx"
 
 export const UserContext = React.createContext();
-const MODE = "DEVELOPMENT"; // DEVELOPMENT || DEPLOYMENT
 
 function App() {
 	const [user,setUser] = useState({});
+	const [remainingTime, setRemainingTime] = useState(null);
+	
 	useEffect(() => {
-		if(MODE === "DEVELOPMENT"){
+		const func = async () => {  
+		  const token = localStorage.getItem("token");
+		  if (token) {
+			const result = await fetch('http://localhost:3000/auth/get-user', {
+			  method: 'GET',
+			  headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			  }
+			});
+			let userRole;
+			const data = await result.json();
+			if(data.name==="shreyansh"){
+				userRole = "admin";
+			}else{
+				userRole = "user";
+			}
+			// console.log(data);
 			setUser({
-				user:{
-					_id:"1234567890",
-					name:"John Doe",
-					email:"email123456@email.com",
-					password:"password",
-					rollno:"24CSE007",
-					year:1,
-					bountySubmission:{
-						bountyId:"1234567890",
-						solution:[{
-							page:"index.html",
-							from:5,
-							to:9,
-						}],
-						clueHuntOrder:[1,5,2,3,4],
-						clueHuntExpectedAnswer:"OA69BXYZ",
-						hasPassedBounty:true,
-					}	
-				},
-				accesstoken:"abc123",
+			  user:{
+				team:data.team,
+				name: data.name,
+				email: data.email,
+				year: data.year,
+				rollno: data.admissionNumber,
+				clueHuntOrder: data.clueHuntOrder,
+				solutions:[],
+				assignedBounty: {},
+				hasPassedBountyHunt: data.hasPassedBountyHunt,
+				role:userRole
+			  },
+			  accesstoken: token
 			})
+		  }
 		}
-		async function refreshToken(){
-			const result = await(await fetch('{refresh_token_api}',{
-				method:'POST',
-				credentials:'include',
-				headers:{
-					'Content-Type':'application/json',
-				}
-			})).json();
-			setUser({
-				user:result.user,
-				accesstoken:result.accesstoken
-			})
-		}
-		// refreshToken();
-	},[])
+		func();
+	},[]);
+
 
     return (
 		<UserContext.Provider value={[user,setUser]}>
@@ -61,10 +63,12 @@ function App() {
 				<NavBar/>
 				<Routes id="router">
 					<Route path="/login" element={<Login/>}/>
-					<Route path="/admin" element={<Admin/>}/>
-					<Route path="/" element={<HomePage/>}/>
+					<Route path="/"  element={<HomePage remainingTime={remainingTime} setRemainingTime={setRemainingTime}/>}/>
 					<Route path="/about" element={<About/>}/>
-					<Route path="/bugbounty" element={<BugBounty/>}/>
+					<Route path="/bugbounty" element={<BugBounty remainingTime={remainingTime} setRemainingTime={setRemainingTime}/>}/>
+					<Route path="/riddler" element={<Riddler/>}/>
+					<Route path="/admin/dashboard" element={<Dashboard/>}/>
+					<Route path="/admin/register" element={<Register/>}/>
 				</Routes>
 			</div>		
 		</UserContext.Provider>
@@ -72,20 +76,74 @@ function App() {
 }
 
 const Background = () => {
+	const backgroundRef = useRef(null);
+
+ 	// useEffect(() => {
+	// 	const background = backgroundRef.current;
+	// 	let timeoutId = null;
+	// 	let lastX = 0, lastY = 0, lastTime = Date.now();
+
+	// 	const handleMouseMove = (e) => {
+	// 		const x = e.clientX;
+	// 		const y = e.clientY;
+	// 		const now = Date.now();
+
+	// 		const dx = x - lastX;
+	// 		const dy = y - lastY;
+	// 		const dt = now - lastTime;
+
+	// 		const speed = Math.sqrt(dx * dx + dy * dy) / dt;
+	// 		const intensity = Math.min(speed * 4, 0.5);
+
+	// 		const baseColor = [94, 66, 44];
+	// 		const brightColor = [201, 142, 83];
+
+	// 		const blended = baseColor.map((val, i) =>
+	// 			Math.round(val + (brightColor[i] - val) * intensity)
+	// 		);
+
+	// 		const colorHex = `rgb(${blended.join(',')})`;
+
+	// 		background.style.background = `radial-gradient(circle at ${x}px ${y}px, ${colorHex} 60px, rgb(31, 20, 10) 130px)`;
+
+	// 		lastX = x;
+	// 		lastY = y;
+	// 		lastTime = now;
+
+	// 		if (timeoutId) clearTimeout(timeoutId);
+	// 		timeoutId = setTimeout(() => {
+	// 			background.style.background =
+	// 			'radial-gradient(circle at center, rgb(54, 41, 29) 0%, rgb(35, 24, 15) 100%)';
+	// 		}, 300);
+	// 	};
+
+	// 	document.addEventListener('mousemove', handleMouseMove);
+
+	// 	return () => {
+	// 	document.removeEventListener('mousemove', handleMouseMove);
+	// 	clearTimeout(timeoutId);
+	// 	};
+	// }, []);
+
+  	const particles = Array.from({ length: 9 });
+
 	return (
-		<div className="background">
-			<div className="circuit"></div>
-			{/* <div class="particle">.</div>
-			<div class="particle">.</div>
-			<div class="particle">.</div>
-			<div class="particle">.</div>
-			<div class="particle">.</div>
-			<div class="particle">.</div>
-			<div class="particle">.</div>
-			<div class="particle">.</div>
-			<div class="particle">.</div> */}
-	  	</div>
-	)
+	<div ref={backgroundRef} className="background">
+		<div className="circuit" />
+		{particles.map((_, idx) => (
+		<div
+			key={idx}
+			className="particle"
+			style={{
+			top: `${Math.random() * 100}%`,
+			left: `${Math.random() * 100}%`,
+			}}
+		>
+			.
+		</div>
+		))}
+	</div>
+  );
 }
 
 export default App

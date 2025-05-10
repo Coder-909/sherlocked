@@ -2,7 +2,7 @@ import React,{useState,useContext} from 'react'
 import {useNavigate} from "react-router-dom";
 import {UserContext} from "../App"
 
-const Login = () => {
+const Login = ({}) => {
 	const navigate = useNavigate();
 	const [user,setUser] = useContext(UserContext);
 	const [email,setEmail] = useState("");
@@ -13,11 +13,9 @@ const Login = () => {
 	}
 
 	const submitHandler = async(e) => {
-		navigate("/about");
 		e.preventDefault();
-		const result = await(await fetch('http://localhost:4000/login', {
+		const result = await(await fetch('http://localhost:3000/auth/login', {
 			method:"POST",
-			credentials:'include',
 			headers:{
 				'Content-Type': 'application/json',
 			},
@@ -25,18 +23,20 @@ const Login = () => {
 				email,password
 			})
 		})).json();
-		if(result.accesstoken){
+		if(result.token){
 			setUser({
 				user:{user},
-				accesstoken:result.accesstoken
+				accesstoken:result.token
 			})
+			localStorage.setItem("token",result.token);
+			setForceUpdate(Date.now());
 			navigate('/');
 		}else{
-			console.log(result.error);
+			alert("Incorrect username or password");
 		}
 	}
 	return (
-		<div id="Login"> 
+		<div id="Login" className='auth-form'> 
 			<h1>Login</h1>
 			<form onSubmit={submitHandler}>
 				<label>Enter your username/email:</label>
@@ -51,7 +51,7 @@ const Login = () => {
 						setPassword(e.target.value);
 					}}
 				/>
-				<button type="submit" id="login-submit">Login</button>
+				<button type="submit" class="auth-form-submit">Login</button>
 			</form>
 		</div>
 	)

@@ -81,7 +81,7 @@ const BugBounty = ({remainingTime,setRemainingTime}) => {
 	}
 
 	const submissionCode = () => {
-		if(remainingTime?.hours === 0 && remainingTime?.minutes === 0){
+		if(false){
 			return(<h1>Time has run out...</h1>)
 		}else{
 			return(
@@ -127,7 +127,7 @@ const BugBounty = ({remainingTime,setRemainingTime}) => {
 				<div className="bounty-question">
 					<h1>Github repository:</h1>
 					<a href={user.user?.assignedBounty?.githubLink}>{user.user?.assignedBounty?.githubLink}</a>
-					<p>Time remaining: {`${remainingTime?.hours}:${remainingTime?.minutes}`}</p>
+					{/* <p>Time remaining: {`${remainingTime?.hours}:${remainingTime?.minutes}`}</p> */}
 				</div>
 				<div className="bounty-submission">
 					{/* {user.user?.solutions?.map((data,index)=>{

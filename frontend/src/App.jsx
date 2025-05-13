@@ -7,7 +7,7 @@ import HomePage from "./pages/HomePage.jsx";
 import About from "./pages/About.jsx"
 import BugBounty from "./pages/rounds/BugBounty.jsx"
 import Riddler from "./pages/rounds/Riddler.jsx"
-import Register from "./pages/Register.jsx"
+// import Register from "./pages/Register.jsx"
 import Dashboard from "./pages/Dashboard.jsx"
 
 export const UserContext = React.createContext();
@@ -29,6 +29,7 @@ function App() {
 			});
 			let userRole;
 			const data = await result.json();
+			console.log(data)
 			if(data.name==="shreyansh"){
 				userRole = "admin";
 			}else{
@@ -43,7 +44,7 @@ function App() {
 				year: data.year,
 				rollno: data.admissionNumber,
 				clueHuntOrder: data.clueHuntOrder,
-				solutions:[],
+				solutions:data.solutions,
 				assignedBounty: {},
 				hasPassedBountyHunt: data.hasPassedBountyHunt,
 				role:userRole
@@ -68,7 +69,7 @@ function App() {
 					<Route path="/bugbounty" element={<BugBounty remainingTime={remainingTime} setRemainingTime={setRemainingTime}/>}/>
 					<Route path="/riddler" element={<Riddler/>}/>
 					<Route path="/admin/dashboard" element={<Dashboard/>}/>
-					<Route path="/admin/register" element={<Register/>}/>
+					{/* <Route path="/admin/register" element={<Register/>}/> */}
 				</Routes>
 			</div>		
 		</UserContext.Provider>
@@ -77,53 +78,6 @@ function App() {
 
 const Background = () => {
 	const backgroundRef = useRef(null);
-
- 	// useEffect(() => {
-	// 	const background = backgroundRef.current;
-	// 	let timeoutId = null;
-	// 	let lastX = 0, lastY = 0, lastTime = Date.now();
-
-	// 	const handleMouseMove = (e) => {
-	// 		const x = e.clientX;
-	// 		const y = e.clientY;
-	// 		const now = Date.now();
-
-	// 		const dx = x - lastX;
-	// 		const dy = y - lastY;
-	// 		const dt = now - lastTime;
-
-	// 		const speed = Math.sqrt(dx * dx + dy * dy) / dt;
-	// 		const intensity = Math.min(speed * 4, 0.5);
-
-	// 		const baseColor = [94, 66, 44];
-	// 		const brightColor = [201, 142, 83];
-
-	// 		const blended = baseColor.map((val, i) =>
-	// 			Math.round(val + (brightColor[i] - val) * intensity)
-	// 		);
-
-	// 		const colorHex = `rgb(${blended.join(',')})`;
-
-	// 		background.style.background = `radial-gradient(circle at ${x}px ${y}px, ${colorHex} 60px, rgb(31, 20, 10) 130px)`;
-
-	// 		lastX = x;
-	// 		lastY = y;
-	// 		lastTime = now;
-
-	// 		if (timeoutId) clearTimeout(timeoutId);
-	// 		timeoutId = setTimeout(() => {
-	// 			background.style.background =
-	// 			'radial-gradient(circle at center, rgb(54, 41, 29) 0%, rgb(35, 24, 15) 100%)';
-	// 		}, 300);
-	// 	};
-
-	// 	document.addEventListener('mousemove', handleMouseMove);
-
-	// 	return () => {
-	// 	document.removeEventListener('mousemove', handleMouseMove);
-	// 	clearTimeout(timeoutId);
-	// 	};
-	// }, []);
 
   	const particles = Array.from({ length: 9 });
 

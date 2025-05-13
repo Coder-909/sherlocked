@@ -109,16 +109,16 @@ const HomePage = ({remainingTime,setRemainingTime}) => {
         <img unselectable src={avatar} alt="Avatar" />
         <div className="profile-info">
           <div className="profile-header">
-            <p>Team ID</p>
+            <p>Team name</p>
             <p>Name</p>
             <p>Year</p>
-            <p>ZealID</p>
+            <p>Roll no.</p>
           </div>
           <div className='profile-data'>
-            <p>{user.user?.team}</p>
-            <p>{user.user?.name}</p>
-            <p>{user.user?.year}</p>
-            <p>{user.user?.rollno}</p>
+            <p>{user.user?.team ? user.user?.team : "Loading..."}</p>
+            <p>{user.user?.name ? user.user?.name : "Loading..."}</p>
+            <p>{user.user?.year ? user.user?.year : "Loading..."}</p>
+            <p>{user.user?.rollno ? user.user?.rollno : "Loading..."}</p>
           </div>
         </div>
       </div>  

@@ -130,6 +130,9 @@ const BugBounty = ({remainingTime,setRemainingTime}) => {
 					<p>Time remaining: {`${remainingTime?.hours}:${remainingTime?.minutes}`}</p>
 				</div>
 				<div className="bounty-submission">
+					{user.user?.solutions?.map((data,index)=>{
+						<BugSolution setSubmission={() => {console.log("Done")}} data={data} key={index} index={index} />
+					})}
 					{submissionCode()}
 					{/* {finalSubmission && <div className='popup-backdrop' onClick={() => setFinalSubmission(false)}>
 						<div className='final-submission' onClick={(e) => e.stopPropagation()}>

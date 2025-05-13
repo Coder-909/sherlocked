@@ -39,19 +39,19 @@ const Login = ({}) => {
 		<div id="Login" className='auth-form'> 
 			<h1>Login</h1>
 			<form onSubmit={submitHandler}>
-				<label>Enter your username/email:</label>
+				<label>Enter your Email/Teamid:</label>
 				<input type="text" value={email} 
 					onChange={(e)=>{
 						setEmail(e.target.value);
 					}}
 				/>
-				<label>Enter your password:</label>
+				<label>Enter your ZealID:</label>
 				<input type="password" value={password} 
 					onChange={(e)=>{
 						setPassword(e.target.value);
 					}}
 				/>
-				<button type="submit" class="auth-form-submit">Login</button>
+				<button type="submit" className="auth-form-submit">Login</button>
 			</form>
 		</div>
 	)

@@ -112,7 +112,7 @@ const BugBounty = ({remainingTime,setRemainingTime}) => {
 							<li>Run the application.</li>
 							<li>Identify the bugs.</li>
 							<li>Fix the bugs.</li>
-							<li>Mention all the bugs in the submission below.</li>
+							<li>Mention all the bugs in the submission below(make sure that all the line details are as same as given in github repository).</li>
 						</ul>
 						<img unselectable src={InstructionImage} alt='instruction-img'/>
 					</div>

@@ -43,7 +43,7 @@ const BugBounty = ({remainingTime,setRemainingTime}) => {
 		if (startTime) {
 			const currentTime = new Date().getTime();
 			const elapsedTime = currentTime - startTime; // Elapsed time in milliseconds
-			const totalDuration = 2 * 60 * 60 * 1000; // 4 hours in milliseconds
+			const totalDuration = 4 * 60 * 60 * 1000; // 4 hours in milliseconds
 			const remainingMilliseconds = totalDuration - elapsedTime;
 
 			if (remainingMilliseconds <= 0) {
@@ -130,9 +130,9 @@ const BugBounty = ({remainingTime,setRemainingTime}) => {
 					<p>Time remaining: {`${remainingTime?.hours}:${remainingTime?.minutes}`}</p>
 				</div>
 				<div className="bounty-submission">
-					{user.user?.solutions?.map((data,index)=>{
+					{/* {user.user?.solutions?.map((data,index)=>{
 						<BugSolution setSubmission={() => {console.log("Done")}} data={data} key={index} index={index} />
-					})}
+					})} */}
 					{submissionCode()}
 					{/* {finalSubmission && <div className='popup-backdrop' onClick={() => setFinalSubmission(false)}>
 						<div className='final-submission' onClick={(e) => e.stopPropagation()}>

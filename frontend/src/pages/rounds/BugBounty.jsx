@@ -43,7 +43,7 @@ const BugBounty = ({remainingTime,setRemainingTime}) => {
 		if (startTime) {
 			const currentTime = new Date().getTime();
 			const elapsedTime = currentTime - startTime; // Elapsed time in milliseconds
-			const totalDuration = 4 * 60 * 60 * 1000; // 4 hours in milliseconds
+			const totalDuration = 2 * 60 * 60 * 1000; // 4 hours in milliseconds
 			const remainingMilliseconds = totalDuration - elapsedTime;
 
 			if (remainingMilliseconds <= 0) {

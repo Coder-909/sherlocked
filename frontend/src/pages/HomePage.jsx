@@ -131,7 +131,7 @@ const HomePage = ({remainingTime,setRemainingTime}) => {
           </div>
           <div className="round-bts">
             {BugBountyStartButton()}
-            <p>Time Duration: <span>4 hours</span></p>
+            <p>Time Duration: <span>2 hours</span></p>
           </div>
           <div className="desc">
             <p>Find the bug and get your bounty.</p>

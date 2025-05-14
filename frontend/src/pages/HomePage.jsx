@@ -43,7 +43,7 @@ const HomePage = ({remainingTime,setRemainingTime}) => {
 				clueHuntOrder: data.clueHuntOrder,
 				solutions:[],
 				assignedBounty: {},
-				hasPassedBountyHunt: false,
+				hasPassedBountyHunt: data.hasPassedBountyHunt,
 				role:userRole
 			  },
 			  accesstoken: token
@@ -139,13 +139,14 @@ const HomePage = ({remainingTime,setRemainingTime}) => {
           </div>
           
         </div>
-        <div className={user.user?.hasPassedBountyHunt ? "round" : "round locked"}>
+       {/* {user.user?.hasPassedBountyHunt}  */}
+        <div className={false ? "round" : "round locked"}>
           <div className="round-header">
               <p>Round 2: </p>
-              <p unselectable>{user.user?.hasPassedBountyHunt ? "Riddler" : "Nice try"}</p>
+              <p unselectable>{false ? "Riddler" : "Nice try"}</p>
             </div>
             <div className="desc">
-              <p>{user.user?.hasPassedBountyHunt ? "Solve riddles, find clues and arrange them into a phrase/word." : "How long are you going to try?"}</p>
+              <p>{false ? "Solve riddles, find clues and arrange them into a phrase/word." : "How long are you going to try?"}</p>
             </div>
             <div className="round-bts">
               {riddleStartButton()}

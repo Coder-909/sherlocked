@@ -77,8 +77,8 @@ const Riddler = () => {
             <li>✪ Solve each riddle to unlock the bug in code.
             </li>
             <li>✪ No brute force or external help allowed.</li>
-            <li>✪ Each riddle corresponds to one code snippet.</li>
-            <li>✪ You get only one chance per riddle.</li>
+            <li>✪ Each riddle corresponds to one part of the answer.</li>
+            <li>✪ To solve these you will have to think outside of the box.</li>
             <li>✪ After getting the answers to all the riddles, join them in the same order as the question and submit your answer.</li>
             <li>✪ Time is limited, so choose wisely!</li>
           </ul>

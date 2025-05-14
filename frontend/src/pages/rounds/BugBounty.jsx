@@ -81,7 +81,7 @@ const BugBounty = ({remainingTime,setRemainingTime}) => {
 	}
 
 	const submissionCode = () => {
-		if(false){
+		if(true){
 			return(<h1>Time has run out...</h1>)
 		}else{
 			return(

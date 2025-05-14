@@ -95,10 +95,11 @@ const HomePage = ({remainingTime,setRemainingTime}) => {
     if(user.user?.hasPassedBountyHunt){
       return(<p className="final">Cleared</p>)
     }
-    else if(localStorage.getItem("round1-start-time") !== null){
-      return (<button className="round1-start" onClick={() => navigate('/bugbounty')}>Continue</button>)
-    }else if(!user.user?.hasPassedBountyHunt){
-      return (<button className="round1-start" onClick={handleRound1Start}>Start</button>)
+    // else if(localStorage.getItem("round1-start-time") !== null){
+    //   return (<button className="round1-start" onClick={() => navigate('/bugbounty')}>Continue</button>)
+    else if(!user.user?.hasPassedBountyHunt){
+      // return (<button className="round1-start" onClick={handleRound1Start}>Start</button>)
+        // return(<p className="final">Not cleared</p>)
     } 
   }
 

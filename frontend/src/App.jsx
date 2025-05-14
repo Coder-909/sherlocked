@@ -35,7 +35,7 @@ function App() {
 			}else{
 				userRole = "user";
 			}
-			// console.log(data);
+			console.log(data);
 			setUser({
 			  user:{
 				team:data.team,

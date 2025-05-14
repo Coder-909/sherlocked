@@ -43,7 +43,7 @@ const HomePage = ({remainingTime,setRemainingTime}) => {
 				clueHuntOrder: data.clueHuntOrder,
 				solutions:[],
 				assignedBounty: {},
-				hasPassedBountyHunt: data.hasPassedBountyHunt,
+				hasPassedBountyHunt: false,
 				role:userRole
 			  },
 			  accesstoken: token

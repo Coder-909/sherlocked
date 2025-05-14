@@ -92,7 +92,7 @@ const HomePage = ({remainingTime,setRemainingTime}) => {
   }
 
   const BugBountyStartButton = () => {
-    if(user.user?.hasPassedBountyHunt && false){
+    if(user.user?.hasPassedBountyHunt){
       return(<p className="final">Cleared</p>)
     }
     else if(localStorage.getItem("round1-start-time") !== null){
@@ -140,13 +140,13 @@ const HomePage = ({remainingTime,setRemainingTime}) => {
           
         </div>
        {/* {user.user?.hasPassedBountyHunt}  */}
-        <div className={false ? "round" : "round locked"}>
+        <div className={user.user?.hasPassedBountyHunt ? "round" : "round locked"}>
           <div className="round-header">
               <p>Round 2: </p>
-              <p unselectable>{false ? "Riddler" : "Nice try"}</p>
+              <p unselectable>{user.user?.hasPassedBountyHunt ? "Riddler" : "Nice try"}</p>
             </div>
             <div className="desc">
-              <p>{false ? "Solve riddles, find clues and arrange them into a phrase/word." : "How long are you going to try?"}</p>
+              <p>{user.user?.hasPassedBountyHunt ? "Solve riddles, find clues and arrange them into a phrase/word." : "How long are you going to try?"}</p>
             </div>
             <div className="round-bts">
               {riddleStartButton()}

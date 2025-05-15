@@ -151,7 +151,7 @@ const HomePage = ({remainingTime,setRemainingTime}) => {
             <div className="round-bts">
               {riddleStartButton()}
               {/* <p>Time Duration: <span>{user.user?.hasPassedBountyHunt ? "1 Day" : "0"}</span></p> */}
-              <p>Open window:14 May</p>
+              <p>Last submission: 6pm, 15 May</p>
             </div>
         </div>
       </div>

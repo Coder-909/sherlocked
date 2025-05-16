@@ -81,7 +81,7 @@ const HomePage = ({remainingTime,setRemainingTime}) => {
     }
   }
   const riddleStartButton = () => {
-      if(riddleSubmission !== null){
+      if(riddleSubmission !== null || true){
         return( <p className='final'>Final submission done</p>)
       }
       if(!user.user?.hasPassedBountyHunt){
